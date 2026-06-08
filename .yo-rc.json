@@ -1,0 +1,13 @@
+{
+  "generator-ui5-project": {
+    "namespaceUI5": "orders",
+    "projectName": "orders",
+    "uimoduleName": "webapp",
+    "enableFPM": false,
+    "platform": "Static webserver",
+    "ui5Libs": "Local resources (SAPUI5)",
+    "newDir": false,
+    "initRepo": true,
+    "projectId": "orders.orders"
+  }
+}
