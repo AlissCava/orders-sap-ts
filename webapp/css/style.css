@@ -1,0 +1,73 @@
+
+/* 1. Sfondo generale dell'app leggermente scaldato */
+.sapMApp {
+    background-color: #fbf8ff !important; /* Lilla chiarissimo, quasi bianco, molto luminoso */
+}
+
+/* 2. Titoli delle pagine: Lilla scuro per un contrasto perfetto e font grande */
+.sapMPageHeader .sapMTitle {
+    font-size: 1.75rem !important;
+    font-weight: 800 !important;
+    color: #4a148c !important; /* Viola/Lilla scuro ad altissima leggibilità */
+}
+
+/* 3. Effetto "Card" per Tabelle e Form con bordi lilla morbidi ma netti */
+.myCustomCard {
+    box-shadow: 0 6px 14px rgba(74, 20, 140, 0.12) !important;
+    border-radius: 12px !important;
+    border: 2px solid #ce93d8 !important; /* Bordo lilla marcato per definire bene l'area */
+    background-color: #ffffff !important;
+    margin: 1rem !important;
+    padding: 1rem !important;
+}
+
+/* 4. Evidenziazione netta delle righe della tabella al passaggio del mouse */
+.sapMListTblRow:hover {
+    background-color: #f3e5f5 !important; /* Sfondo lilla pastello al passaggio, molto elegante */
+    cursor: pointer !important;
+}
+
+/* 5. Testo delle colonne della tabella più grande e marcato */
+.sapMColumnHeader .sapMText {
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+    color: #38006b !important; /* Viola scurissimo */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* 6. Pulsanti principali (Es. Salva, Nuovo Articolo) */
+.sapMBtnEmphasized {
+    background-color: #7b1fa2 !important; /* Lilla/Viola intenso e vibrante */
+    border-color: #4a148c !important;
+    color: #ffffff !important;
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+    border-radius: 8px !important;
+    text-shadow: none !important; /* Rimuove ombre fastidiose dal testo */
+}
+
+/* 7. Pulsanti principali al passaggio del mouse */
+.sapMBtnEmphasized:hover {
+    background-color: #4a148c !important; /* Più scuro e deciso al passaggio */
+}
+
+/* 8. Campi di input: testo nitido e bordi lilla per trovare subito dove scrivere */
+.sapMInputBaseInner {
+    font-size: 1.1rem !important;
+    font-weight: bold !important;
+    color: #1a1a1a !important; /* Quasi nero, per spiccare bene */
+    border: 2px solid #ab47bc !important; /* Bordo lilla per delineare perfettamente la casella */
+    border-radius: 6px !important;
+}
+
+/* 9. Icone del menu laterale in tinta */
+.sapUiIcon {
+    color: #7b1fa2 !important;
+}
+
+/* 10. Uniforma la dimensione del testo e delle icone su TUTTI i bottoni (Standard, Trasparenti, Icone) */
+.sapMBtnContent,
+.sapMBtnIcon {
+    font-size: 1.1rem !important;
+}

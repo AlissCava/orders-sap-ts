@@ -1,0 +1,35 @@
+<mvc:View
+    controllerName="orders.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:tnt="sap.tnt"
+    displayBlock="true">
+    
+    <tnt:ToolPage id="toolPage">
+        <tnt:header>
+            <tnt:ToolHeader>
+                <Button id="sideNavigationToggleButton"
+                        icon="sap-icon://menu2"
+                        type="Transparent"
+                        press=".onCollapseExpandPress" />
+                <Title text="{i18n>appTitle}" />
+            </tnt:ToolHeader>
+        </tnt:header>
+
+        <tnt:sideContent>
+            <tnt:SideNavigation id="sideNavigation" itemSelect=".onItemSelect">
+                <tnt:NavigationList>
+                    <tnt:NavigationListItem text="{i18n>navDashboard}" icon="sap-icon://bar-chart" key="RouteDashboard" />
+                    
+                    <tnt:NavigationListItem text="{i18n>navOrders}" icon="sap-icon://list" key="RouteHome" />
+                    
+                    <tnt:NavigationListItem text="{i18n>navArticles}" icon="sap-icon://product" key="RouteArticles" />
+                </tnt:NavigationList>
+            </tnt:SideNavigation>
+        </tnt:sideContent>
+
+        <tnt:mainContents>
+            <App id="app" />
+        </tnt:mainContents>
+    </tnt:ToolPage>
+</mvc:View>

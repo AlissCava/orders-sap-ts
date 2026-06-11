@@ -1,0 +1,83 @@
+<mvc:View
+    controllerName="orders.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:core="sap.ui.core" 
+    xmlns="sap.m">
+
+   <Page id="homePage" title="{i18n>homePageTitle}">
+        <content>
+            <Table  id="ordersTable" 
+                    class="myCustomCard"
+                    items="{/ZES_lista_ordiniSet}" 
+                    updateFinished=".onTableUpdateFinished" 
+                    growing="true" 
+                    growingThreshold="10"> 
+                    
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <SearchField id="searchField" width="200px" placeholder="{i18n>searchPlaceholder}" liveChange=".onSearch" />
+                        
+                        <Label text="{i18n>lblStatusFilter}" labelFor="statusFilter" class="sapUiTinyMarginEnd sapUiSmallMarginBegin" />
+                        <Select id="statusFilter" change=".onSearch" forceSelection="false" width="180px">
+                            <core:Item key="" text="{i18n>statusAll}" />
+                            <core:Item key="1" text="{i18n>statusCreated}" /> 
+                            <core:Item key="2" text="{i18n>statusProcessing}" />
+                            <core:Item key="3" text="{i18n>statusTransit}" />
+                            <core:Item key="4" text="{i18n>statusClosed}" />
+                        </Select>
+
+                        <Label text="Periodo:" labelFor="dateFilter" class="sapUiTinyMarginEnd sapUiSmallMarginBegin" />
+                        <DateRangeSelection id="dateFilter" change=".onSearch" displayFormat="dd/MM/yyyy" width="220px" />
+                        
+                        <ToolbarSpacer />
+                        
+                        <Button icon="sap-icon://sort" text="{i18n>btnSort}" press=".onSort" />
+                        <Button icon="sap-icon://excel-attachment" text="{i18n>btnExportExcel}" press=".onExport" />
+                        <Button icon="sap-icon://add" text="{i18n>btnNewOrder}" type="Emphasized" press=".onNavToCreateOrder" />
+                    </OverflowToolbar>
+                </headerToolbar>
+                
+                <columns>
+                    <Column><Text text="{i18n>colOrderID}" /></Column>
+                    <Column><Text text="{i18n>colCustomer}" /></Column>
+                    <Column><Text text="{i18n>colOrderDate}" /></Column> 
+                    <Column hAlign="End"><Text text="{i18n>colTotalAmount}" /></Column>
+                    <Column><Text text="{i18n>colStatus}" /></Column>
+                    
+                    <Column width="3rem" hAlign="Center"></Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem type="Navigation" press=".onNavToDetail">
+                        <cells>
+                            <Text text="{NumOrdine}" />
+                            <Text text="{Cliente}" />
+                            
+                            <Text text="{ 
+                                path: 'DataOrdine', 
+                                formatter: '.formatter.formatItalianDate' 
+                            }" />
+                            
+                            <ObjectNumber number="{ path: 'ImportoTot', formatter: '.formatter.currencyValue' }" />
+                            
+                            <ObjectStatus 
+                                text="{StatoTxt}" 
+                                state="{ path: 'StatoTxt', formatter: '.formatter.statusState' }" 
+                                icon="{ path: 'StatoTxt', formatter: '.formatter.statusIcon' }" />
+                                
+                            <Button icon="sap-icon://delete" type="Transparent" press=".onDeleteOrder" tooltip="Elimina Ordine" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            
+            <VBox class="myCustomCard sapUiSmallMargin" alignItems="End">
+                <HBox alignItems="Center" justifyContent="End" width="100%">
+                    <Label text="{i18n>lblTotalValue}:" design="Bold" class="sapUiSmallMarginEnd" />
+                    <ObjectNumber number="{ path: 'summaryModel>/TotalValue', formatter: '.formatter.currencyValue' }" state="Success" />
+                </HBox>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

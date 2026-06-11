@@ -1,0 +1,57 @@
+<mvc:View
+    controllerName="orders.controller.Articles"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m">
+
+    <Page title="{i18n>articlesPageTitle}" showNavButton="true" navButtonPress=".onNavBack">
+        <content>
+            <Table id="articlesTable" items="{/ZES_articoliSet}" class="myCustomCard">
+            
+            <headerToolbar>
+                <OverflowToolbar>
+                    <Title text="{i18n>articlesPageTitle}" />
+                    <ToolbarSpacer />
+                    
+                    <SearchField 
+                        placeholder="{i18n>searchArticlePlaceholder}" 
+                        liveChange=".onSearchArticle" 
+                        width="300px" />
+                        
+                    <Button text="{i18n>btnExportExcel}" icon="sap-icon://excel-attachment" press=".onExportExcel" />
+                    <Button text="{i18n>btnNewArticle}" type="Emphasized" press=".onCreateArticle" />
+                </OverflowToolbar>
+            </headerToolbar>
+
+            <columns>
+                <Column>
+                    <Text text="{i18n>colArticleCode}" />
+                </Column>
+                <Column>
+                    <Text text="{i18n>colArticleName}" />
+                </Column>
+                <Column hAlign="End">
+                    <Text text="{i18n>colAvailableQty}" />
+                </Column>
+                <Column hAlign="End">
+                    <Text text="{i18n>colPrice}" />
+                </Column>
+            </columns>
+
+            <items>
+                <ColumnListItem type="Navigation" press=".onArticlePress">
+                    <cells>
+                        <Text text="{CodArticolo}" />
+                        <Text text="{NomeArticolo}" />
+                        
+                        <Text text="{QuantitaDisp}" />
+                        
+                        <ObjectNumber number="{ path: 'Importo', formatter: '.formatter.formatItalianEuro' }" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+        </content>
+        
+    </Page>
+</mvc:View>

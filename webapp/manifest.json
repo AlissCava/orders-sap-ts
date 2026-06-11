@@ -1,0 +1,172 @@
+{
+  "_version": "1.21.0",
+
+  "sap.app": {
+    "id": "orders",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "applicationVersion": {
+      "version": "${version}"
+    },
+    "sourceTemplate": {
+      "id": "generator-ui5-ts-app",
+      "version": "1.1.0"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZEX_ORDERS_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0",
+          "localUri": "localService/mainService/metadata.xml"
+        }
+      }
+    }
+  },
+
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {},
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "orders.view.App",
+      "type": "XML",
+      "id": "App",
+      "async": true
+    },
+
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+
+    "dependencies": {
+      "minUI5Version": "1.148.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.suite.ui.microchart": {},
+        "sap.ui.layout": {},
+        "sap.viz": {}
+      }
+    },
+
+    "handleValidation": true,
+
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "orders.i18n.i18n",
+          "supportedLocales": ["en", "it"],
+          "fallbackLocale": "en",
+          "async": true
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "type": "sap.ui.model.odata.v2.ODataModel", 
+        "settings": {
+          "defaultOperationMode": "Server",
+          "defaultBindingMode": "TwoWay",
+          "useBatch": false,
+          "defaultCountMode": "Inline" 
+        }
+      }
+    },
+
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "type": "View",
+        "viewType": "XML",
+        "path": "orders.view",
+        "controlId": "app",
+        "controlAggregation": "pages",
+        "transition": "slide",
+        "async": true
+      },
+      "routes": [
+        {
+          "name": "RouteDashboard",
+          "pattern": "",
+          "target": ["TargetDashboard"]
+        },
+        {
+          "name": "RouteHome",
+          "pattern": "orders",
+          "target": ["TargetHome"]
+        },
+        {
+          "name": "RouteArticles",
+          "pattern": "articles",
+          "target": ["TargetArticles"]
+        },
+        {
+          "name": "RouteOrderDetail",
+          "pattern": "orders/{orderId}",
+          "target": ["TargetOrderDetail"]
+        },
+        {
+          "name": "RouteOrderForm",
+          "pattern": "order/{objectId}",
+          "target": ["TargetOrderForm"]
+        },
+        {
+          "name": "RouteArticleForm",
+          "pattern": "article/{objectId}",
+          "target": ["TargetArticleForm"]
+        }
+      ],
+      "targets": {
+        "TargetHome": {
+          "viewId": "Home",
+          "viewName": "Home"
+        },
+        "TargetDashboard": {
+          "viewId": "Dashboard",
+          "viewName": "Dashboard"
+        },
+        "TargetArticles": {
+          "viewId": "Articles",
+          "viewName": "Articles"
+        },
+        "TargetOrderDetail": {
+          "viewId": "OrderDetail",
+          "viewName": "OrderDetail"
+        },
+        "TargetOrderForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "orderForm",
+          "viewName": "OrderForm"
+        },
+        "TargetArticleForm": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "articleForm",
+          "viewName": "ArticleForm"
+        }
+      }
+    }
+  }
+}

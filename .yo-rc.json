@@ -1,13 +1,21 @@
 {
-  "generator-ui5-project": {
-    "namespaceUI5": "orders",
-    "projectName": "orders",
-    "uimoduleName": "webapp",
-    "enableFPM": false,
-    "platform": "Static webserver",
-    "ui5Libs": "Local resources (SAPUI5)",
-    "newDir": false,
-    "initRepo": true,
-    "projectId": "orders.orders"
+  "generator-ui5-ts-app": {
+    "namespace": "orders",
+    "framework": "SAPUI5",
+    "frameworkVersion": "1.148.1",
+    "author": "AlissCava",
+    "tstypes": "@sapui5/types",
+    "tstypesVersion": "1.148.1",
+    "appId": "orders",
+    "appURI": "orders",
+    "cdnDomain": "ui5.sap.com",
+    "defaultTheme": "sap_horizon",
+    "gte1_98_0": true,
+    "gte1_104_0": true,
+    "gte1_115_0": true,
+    "gte1_120_0": true,
+    "gte1_142_0": true,
+    "lt1_124_0": false,
+    "setupCompleted": true
   }
 }
